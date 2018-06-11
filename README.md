@@ -13,7 +13,8 @@ This image is base on `debian:stretch-slim`.
 
 ## Run ##
 
-If you don't want any persistency:
+If you don't want any persistency, and you want to use the automated build from
+docker hub:
 
 ```shell
     docker run -d \
