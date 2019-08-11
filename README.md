@@ -1,9 +1,9 @@
 # docker-firefox52 #
 
-Docker image with Firefox 52 (maintained by the Debian Project) and Java
+Docker image with Firefox (maintained by the Fedora Project) and Java
 plugin.
 
-This image is base on `debian:stretch-slim`.
+This image is base on `fedora:23`.
 
 ## Build ##
 
@@ -27,10 +27,13 @@ docker run -d \
     -e GDK_SCALE -e GDK_DPI_SCALE \
     --device /dev/dri \
     --name firefox52 \
-    eriol/firefox52
+    therevoman/firefox52
 ```
 
 otherwise remember to mount volumes for directories needed by Firefox.
+
+HIDPI rendering does not work properly as the image is using java 1.6.  To get firefox to scale properly set values in GDK_SCALE (integer) or GDK_DPI_SCALE (float).
+
 
 If you get an error like the following:
 
@@ -61,5 +64,24 @@ docker run -d \
     -e GDK_SCALE -e GDK_DPI_SCALE \
     --device /dev/dri \
     --name firefox52 \
-    eriol/firefox52
+    therevoman/firefox52
 ```
+
+My execution settings:
+
+```shell
+docker run -i -t --rm \
+    --shm-size 2g \
+    --net host \
+    --ipc=host \
+    --cpuset-cpus 0 \
+    -v /etc/localtime:/etc/localtime:ro \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -e "DISPLAY=${DISPLAY}" \
+    -e GDK_SCALE=2 \
+    -e GDK_DPI_SCALE \
+    --device /dev/dri \
+    --name firefox52 \
+    therevoman/firefox52
+```
+
