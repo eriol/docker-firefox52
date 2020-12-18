@@ -67,3 +67,17 @@ docker run -d \
     --name firefox52 \
     eriol/firefox52
 ```
+
+### Run using podman
+
+```shell
+podman run -d \
+    --net host \
+    -v /etc/localtime:/etc/localtime:ro \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -e "DISPLAY=${DISPLAY}" \
+    -e GDK_SCALE -e GDK_DPI_SCALE \
+    --device /dev/dri \
+    --name firefox52 \
+    docker.io/eriol/firefox52
+```
