@@ -1,17 +1,21 @@
-# docker-firefox52 #
+# docker-firefox52
 
-Docker image with Firefox 52 (maintained by the Debian Project) and Java
-plugin.
+Docker image with Firefox 52 and Java plugin.
 
-This image is base on `debian:stretch-slim`.
+This image is base on `debian:stretch-slim` and just install the packaged
+Firefox and icedtea-plugin from official Debian repository.
 
-## Build ##
+**Please note that Firefox 52 ESR reached EOL on 05/09/2018.**
+
+## Build
 
 ```
 docker build -t 'yourusername/firefox52' .
 ```
 
-## Run ##
+## Run
+
+### Run using docker
 
 If you don't want any persistency, and you want to use the automated build from
 docker hub:
